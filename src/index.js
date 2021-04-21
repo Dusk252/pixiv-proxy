@@ -5,8 +5,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
 // Configuration
-const PORT = 3000;
-const HOST = 'localhost';
+const PORT = process.env.PORT || 3000;
 const REFERER = 'https://www.pixiv.net/';
 
 app.get('/info', (req, res, next) => {
@@ -25,6 +24,6 @@ app.use(
     })
 );
 
-app.listen(PORT, HOST, () => {
-    console.log(`Starting Proxy at ${HOST}:${PORT}`);
+app.listen(PORT, () => {
+    console.log(`starting Proxy at port ${PORT}`);
 });
